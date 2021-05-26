@@ -1,6 +1,10 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var length = document.getElementById('length').value;
+
+function getInputValue(){
+  // Selecting the input element and get its value 
+
+}
 
 //Character strings and arrays
 var lowCase = 'abcdefghijklmnopqrstuvwxyz'
@@ -11,11 +15,12 @@ var spec = '!#$%&()*+,-./:;<=>?@[\]^_`{|}~'
 //Generate password
 function generatePassword () {
   var list = ""
-  if (length <= 8 || length >= 128) {
+  var length = document.getElementById("length").value;
+
+  if (!(length >= 8 && length <= 128)) {
     alert("Password must be 8 to 128 characters")
     return
   }
-
 
 if (document.querySelector('#a:checked') !== null){
   list = list.concat(lowCase)
@@ -35,7 +40,7 @@ if (list.length == 0){
 }
 
 var set = list.split("")
-console.log(length)
+
   for (var i = 0; i < length; i++) {
     password += getPasswordCharacter();
   }
