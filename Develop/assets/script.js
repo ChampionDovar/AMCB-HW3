@@ -1,16 +1,48 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var length = document.getElementById('length').value;
 
-//Character sets
-var lowCaseBl = 'abcdefghijklmnopqrstuvwxyz'
-var upCaseBl = lowCaseBl.toUpperCase()
-var numBl = '0123456789'
-var specBl = '!#$%&()*+,-./:;<=>?@[\]^_`{|}~'
+//Character strings and arrays
+var lowCase = 'abcdefghijklmnopqrstuvwxyz'
+var upCase = lowCase.toUpperCase()
+var num = '0123456789'
+var spec = '!#$%&()*+,-./:;<=>?@[\]^_`{|}~'
 
-var lowCase = lowCaseBl.split('')
-var upCase = upCaseBl.split('')
-var num = numBl.split('')
-var spec = specBl.split('')
+//Generate password
+function generatePassword () {
+  var list = ""
+  if (length <= 8 || length >= 128) {
+    alert("Password must be 8 to 128 characters")
+    return
+  }
+
+
+if (document.querySelector('#a:checked') !== null){
+  list = list.concat(lowCase)
+}
+if (document.querySelector('#b:checked') !== null){
+  list = list.concat(upCase)
+}
+if (document.querySelector('#c:checked') !== null){
+  list = list.concat(num)
+}
+if (document.querySelector('#d:checked') !== null){
+  list = list.concat(spec)
+}
+if (list.length == 0){
+  alert("You must select at least one option")
+  return
+}
+
+var set = list.split("")
+console.log(length)
+  for (var i = 0; i < length; i++) {
+    password += getPasswordCharacter();
+  }
+
+function getPasswordCharacter(){
+  return list[Math.floor(Math.random() * list.length)]
+}}
 
 // Write password to the #password input
 function writePassword() {
@@ -18,15 +50,13 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+  writePassword.preventdefault
 
 console.log(lowCase)
 console.log(upCase)
-console.log(num)
-console.log(spec)
-console.log(password)
-console.log(passwordText)
+
+
